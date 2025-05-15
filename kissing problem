@@ -33,7 +33,7 @@ for ci, ni in zip(c_int, N_labels):
 
 plt.xlabel(r"$c$ (Radius of small circles)")
 plt.ylabel("N (Number of small circles)")
-plt.title("Number of Small Circles (N) vs. Small Circle Radius $c$ (with $R = 1$)")
+plt.title("Number of Small Circles (N) vs. Small Circle Radius $c$ (with $R = 30)")
 plt.grid(True)
 plt.legend()
 plt.tight_layout()
