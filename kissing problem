@@ -2,7 +2,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 # Define R (radius of the central circle)
-R = 1.0
+R = 30.0
 
 # Create an array of c values from 0.01 to 100
 c = np.linspace(0.01, 100, 1000)
