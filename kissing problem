@@ -1,0 +1,40 @@
+import numpy as np
+import matplotlib.pyplot as plt
+
+# Define R (radius of the central circle)
+R = 1.0
+
+# Create an array of c values from 0.01 to 100
+c = np.linspace(0.01, 100, 1000)
+
+# Compute the ratio c / (c + R)
+x = c / (c + R)
+
+# Compute N using the derived formula
+N = np.pi / np.arcsin(x)
+
+# Find integer values of N and corresponding c values
+N_int = np.round(N)
+mask = np.isclose(N, N_int, atol=0.02)
+c_int = c[mask]
+N_highlight = N[mask]
+N_labels = N_int[mask].astype(int)
+
+# Plotting
+plt.figure(figsize=(12, 6))
+plt.plot(c, N, label=r"$N = \frac{\pi}{\arcsin\left(\frac{c}{c + R}\right)}$", color='blue')
+plt.scatter(c_int, N_highlight, color='red', label='Integer N values', zorder=5)
+
+# Add vertical text labels above each red point with (N, c)
+for ci, ni in zip(c_int, N_labels):
+    label = f"({ni}, {ci:.2f})"
+    plt.text(ci, np.pi / np.arcsin(ci / (ci + R)) + 0.3, label,
+             ha='center', va='bottom', fontsize=9, color='black', rotation=90)
+
+plt.xlabel(r"$c$ (Radius of small circles)")
+plt.ylabel("N (Number of small circles)")
+plt.title("Number of Small Circles (N) vs. Small Circle Radius $c$ (with $R = 1$)")
+plt.grid(True)
+plt.legend()
+plt.tight_layout()
+plt.show()
